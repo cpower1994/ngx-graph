@@ -77,8 +77,18 @@ export interface Matrix {
           <ng-template *ngIf="clusterTemplate" [ngTemplateOutlet]="clusterTemplate" [ngTemplateOutletContext]="{ $implicit: node }">
           </ng-template>
           <svg:g *ngIf="!clusterTemplate" class="node cluster">
-            <svg:rect [attr.width]="node.dimension.width" [attr.height]="node.dimension.height" [attr.fill]="node.data?.color" />
-            <svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.dimension.height / 2">{{node.label}}</svg:text>
+            <!--<svg:rect [attr.width]="node.dimension.width" [attr.height]="node.dimension.height" [attr.fill]="node.data?.color" />-->
+            <!--<svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.dimension.height / 2">{{node.label}}</svg:text>-->
+            <mat-card class="example-card">
+              <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>TITLE</mat-card-title>
+                <mat-card-subtitle>subtitle</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <p>CONTENT</p>
+              </mat-card-content>
+            </mat-card>
           </svg:g>
         </svg:g>
       </svg:g>

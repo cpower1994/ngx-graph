@@ -154,6 +154,8 @@
     "zone.js": "^0.8.25"
   },
   "dependencies": {
+    "@angular/cdk": "^6.4.7",
+    "@angular/material": "^7.1.1",
     "@swimlane/ngx-charts": "^8.0.0",
     "@types/d3-transition": "^1.1.1",
     "d3-dispatch": "^1.0.3",
