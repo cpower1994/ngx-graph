@@ -59,8 +59,8 @@ export interface Matrix {
   styleUrls: ['./graph.component.scss'],
   template: `
   <ngx-charts-chart [view]="[width, height]" [showLegend]="legend" [legendOptions]="legendOptions" (legendLabelClick)="onClick($event)"
-  (legendLabelActivate)="onActivate($event)" (legendLabelDeactivate)="onDeactivate($event)" mouseWheel (mouseWheelUp)="onZoom($event, 'in')"
-  (mouseWheelDown)="onZoom($event, 'out')">
+  (legendLabelActivate)="onActivate($event)" (legendLabelDeactivate)="onDeactivate($event)" mouseWheel (mouseWheelUp)="scrollView($event, 'right')"
+  (mouseWheelDown)="scrollView($event, 'left')">
   <svg:g *ngIf="initialized && graph" [attr.transform]="transform" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)"
     class="graph chart">
     <defs>
@@ -1004,5 +1004,12 @@ export class GraphComponent extends BaseChartComponent implements OnInit, OnChan
       this.zoomLevel = zoomLevel;
       this.updateTransform();
     }
+  }
+
+  scrollView($event: MouseEvent, direction): void {
+    let speed = this.zoomSpeed * this.graph.nodes.length * 50;
+    const distance = (direction === 'right' ? speed : -speed);
+
+    this.pan(distance, 0);
   }
 }
