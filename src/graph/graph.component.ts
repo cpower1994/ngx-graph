@@ -59,8 +59,8 @@ export interface Matrix {
   styleUrls: ['./graph.component.scss'],
   template: `
   <div class="zoom-buttons">
-    <button (click)="zoomIn()"><img src="src/assets/icons8-zoom-in-26.png"></button>
-    <button (click)="zoomOut()"><img src="src/assets/icons8-zoom-out-26.png"></button>
+    <button (click)="zoomIn()">+</button>
+    <button (click)="zoomOut()">-</button>
   </div>
   <ngx-charts-chart [view]="[width, height]" [showLegend]="legend" [legendOptions]="legendOptions" (legendLabelClick)="onClick($event)"
   (legendLabelActivate)="onActivate($event)" (legendLabelDeactivate)="onDeactivate($event)"
