@@ -17,8 +17,11 @@
       fill: #ffffff; }
   .graph .panning-rect {
     fill: rgba(0, 0, 0, 0);
-    cursor: move; }
+    cursor: move;
+    width: 1000000px; }
   .graph .node-group .node:focus {
     outline: none; }
+  .graph .cluster rect {
+    opacity: 0.2; }
 
 /*# sourceMappingURL=index.map*/
