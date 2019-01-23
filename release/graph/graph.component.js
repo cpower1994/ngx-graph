@@ -8,16 +8,6 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-// rename transition due to conflict with d3 transition
 import { animate, style, transition as ngTransition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, ContentChild, ElementRef, EventEmitter, HostListener, Input, Output, QueryList, TemplateRef, ViewChild, ViewChildren, ViewEncapsulation, NgZone, ChangeDetectorRef } from '@angular/core';
 import { BaseChartComponent, ChartComponent, ColorHelper, calculateViewDimensions } from '@swimlane/ngx-charts';
@@ -71,13 +61,16 @@ var GraphComponent = /** @class */ (function (_super) {
         /**
          * Get the current zoom level
          */
-        get: function () {
+        get: /**
+           * Get the current zoom level
+           */
+        function () {
             return this.transformationMatrix.a;
         },
-        /**
-         * Set the current zoom level
-         */
-        set: function (level) {
+        set: /**
+           * Set the current zoom level
+           */
+        function (level) {
             this.zoomTo(Number(level));
         },
         enumerable: true,
@@ -87,13 +80,16 @@ var GraphComponent = /** @class */ (function (_super) {
         /**
          * Get the current `x` position of the graph
          */
-        get: function () {
+        get: /**
+           * Get the current `x` position of the graph
+           */
+        function () {
             return this.transformationMatrix.e;
         },
-        /**
-         * Set the current `x` position of the graph
-         */
-        set: function (x) {
+        set: /**
+           * Set the current `x` position of the graph
+           */
+        function (x) {
             this.panTo(Number(x), null);
         },
         enumerable: true,
@@ -103,13 +99,16 @@ var GraphComponent = /** @class */ (function (_super) {
         /**
          * Get the current `y` position of the graph
          */
-        get: function () {
+        get: /**
+           * Get the current `y` position of the graph
+           */
+        function () {
             return this.transformationMatrix.f;
         },
-        /**
-         * Set the current `y` position of the graph
-         */
-        set: function (y) {
+        set: /**
+           * Set the current `y` position of the graph
+           */
+        function (y) {
             this.panTo(null, Number(y));
         },
         enumerable: true,
@@ -121,7 +120,19 @@ var GraphComponent = /** @class */ (function (_super) {
      *
      * @memberOf GraphComponent
      */
-    GraphComponent.prototype.ngOnInit = function () {
+    /**
+       * Angular lifecycle event
+       *
+       *
+       * @memberOf GraphComponent
+       */
+    GraphComponent.prototype.ngOnInit = /**
+       * Angular lifecycle event
+       *
+       *
+       * @memberOf GraphComponent
+       */
+    function () {
         var _this = this;
         if (this.update$) {
             this.subscriptions.push(this.update$.subscribe(function () {
@@ -173,7 +184,19 @@ var GraphComponent = /** @class */ (function (_super) {
      *
      * @memberOf GraphComponent
      */
-    GraphComponent.prototype.ngOnDestroy = function () {
+    /**
+       * Angular lifecycle event
+       *
+       *
+       * @memberOf GraphComponent
+       */
+    GraphComponent.prototype.ngOnDestroy = /**
+       * Angular lifecycle event
+       *
+       *
+       * @memberOf GraphComponent
+       */
+    function () {
         _super.prototype.ngOnDestroy.call(this);
         for (var _i = 0, _a = this.subscriptions; _i < _a.length; _i++) {
             var sub = _a[_i];
@@ -187,7 +210,19 @@ var GraphComponent = /** @class */ (function (_super) {
      *
      * @memberOf GraphComponent
      */
-    GraphComponent.prototype.ngAfterViewInit = function () {
+    /**
+       * Angular lifecycle event
+       *
+       *
+       * @memberOf GraphComponent
+       */
+    GraphComponent.prototype.ngAfterViewInit = /**
+       * Angular lifecycle event
+       *
+       *
+       * @memberOf GraphComponent
+       */
+    function () {
         var _this = this;
         _super.prototype.ngAfterViewInit.call(this);
         setTimeout(function () { return _this.update(); });
@@ -198,7 +233,19 @@ var GraphComponent = /** @class */ (function (_super) {
      *
      * @memberOf GraphComponent
      */
-    GraphComponent.prototype.update = function () {
+    /**
+       * Base class update implementation for the dag graph
+       *
+       *
+       * @memberOf GraphComponent
+       */
+    GraphComponent.prototype.update = /**
+       * Base class update implementation for the dag graph
+       *
+       *
+       * @memberOf GraphComponent
+       */
+    function () {
         var _this = this;
         _super.prototype.update.call(this);
         this.zone.run(function () {
@@ -222,7 +269,19 @@ var GraphComponent = /** @class */ (function (_super) {
      *
      * @memberOf GraphComponent
      */
-    GraphComponent.prototype.draw = function () {
+    /**
+       * Draws the graph using dagre layouts
+       *
+       *
+       * @memberOf GraphComponent
+       */
+    GraphComponent.prototype.draw = /**
+       * Draws the graph using dagre layouts
+       *
+       *
+       * @memberOf GraphComponent
+       */
+    function () {
         var _this = this;
         if (!this.layout || typeof this.layout === 'string') {
             return;
@@ -318,7 +377,17 @@ var GraphComponent = /** @class */ (function (_super) {
      *
      * @memberOf GraphComponent
      */
-    GraphComponent.prototype.applyNodeDimensions = function () {
+    /**
+       * Measures the node element and applies the dimensions
+       *
+       * @memberOf GraphComponent
+       */
+    GraphComponent.prototype.applyNodeDimensions = /**
+       * Measures the node element and applies the dimensions
+       *
+       * @memberOf GraphComponent
+       */
+    function () {
         var _this = this;
         if (this.nodeElements && this.nodeElements.length) {
             this.nodeElements.map(function (elem) {
@@ -377,7 +446,21 @@ var GraphComponent = /** @class */ (function (_super) {
      *
      * @memberOf GraphComponent
      */
-    GraphComponent.prototype.redrawLines = function (_animate) {
+    /**
+       * Redraws the lines when dragged or viewport updated
+       *
+       * @param {boolean} [animate=true]
+       *
+       * @memberOf GraphComponent
+       */
+    GraphComponent.prototype.redrawLines = /**
+       * Redraws the lines when dragged or viewport updated
+       *
+       * @param {boolean} [animate=true]
+       *
+       * @memberOf GraphComponent
+       */
+    function (_animate) {
         var _this = this;
         if (_animate === void 0) { _animate = true; }
         this.linkElements.map(function (linkEl) {
@@ -404,7 +487,19 @@ var GraphComponent = /** @class */ (function (_super) {
      *
      * @memberOf GraphComponent
      */
-    GraphComponent.prototype.createGraph = function () {
+    /**
+       * Creates the dagre graph engine
+       *
+       *
+       * @memberOf GraphComponent
+       */
+    GraphComponent.prototype.createGraph = /**
+       * Creates the dagre graph engine
+       *
+       *
+       * @memberOf GraphComponent
+       */
+    function () {
         var _this = this;
         this.graphSubscription.unsubscribe();
         this.graphSubscription = new Subscription();
@@ -442,7 +537,21 @@ var GraphComponent = /** @class */ (function (_super) {
      *
      * @memberOf GraphComponent
      */
-    GraphComponent.prototype.calcDominantBaseline = function (link) {
+    /**
+       * Calculate the text directions / flipping
+       *
+       * @param {any} link
+       *
+       * @memberOf GraphComponent
+       */
+    GraphComponent.prototype.calcDominantBaseline = /**
+       * Calculate the text directions / flipping
+       *
+       * @param {any} link
+       *
+       * @memberOf GraphComponent
+       */
+    function (link) {
         var firstPoint = link.points[0];
         var lastPoint = link.points[link.points.length - 1];
         link.oldTextPath = link.textPath;
@@ -464,7 +573,23 @@ var GraphComponent = /** @class */ (function (_super) {
      *
      * @memberOf GraphComponent
      */
-    GraphComponent.prototype.generateLine = function (points) {
+    /**
+       * Generate the new line path
+       *
+       * @param {any} points
+       * @returns {*}
+       *
+       * @memberOf GraphComponent
+       */
+    GraphComponent.prototype.generateLine = /**
+       * Generate the new line path
+       *
+       * @param {any} points
+       * @returns {*}
+       *
+       * @memberOf GraphComponent
+       */
+    function (points) {
         var lineFunction = shape
             .line()
             .x(function (d) { return d.x; })
@@ -480,7 +605,23 @@ var GraphComponent = /** @class */ (function (_super) {
      *
      * @memberOf GraphComponent
      */
-    GraphComponent.prototype.onZoom = function ($event, direction) {
+    /**
+       * Zoom was invoked from event
+       *
+       * @param {MouseEvent} $event
+       * @param {any} direction
+       *
+       * @memberOf GraphComponent
+       */
+    GraphComponent.prototype.onZoom = /**
+       * Zoom was invoked from event
+       *
+       * @param {MouseEvent} $event
+       * @param {any} direction
+       *
+       * @memberOf GraphComponent
+       */
+    function ($event, direction) {
         var zoomFactor = 1 + (direction === 'in' ? this.zoomSpeed : -this.zoomSpeed);
         // Check that zooming wouldn't put us out of bounds
         var newZoomLevel = this.zoomLevel * zoomFactor;
@@ -518,7 +659,19 @@ var GraphComponent = /** @class */ (function (_super) {
      * @param x
      * @param y
      */
-    GraphComponent.prototype.pan = function (x, y, zoomLevel) {
+    /**
+       * Pan by x/y
+       *
+       * @param x
+       * @param y
+       */
+    GraphComponent.prototype.pan = /**
+       * Pan by x/y
+       *
+       * @param x
+       * @param y
+       */
+    function (x, y, zoomLevel) {
         if (zoomLevel === void 0) { zoomLevel = this.zoomLevel; }
         this.transformationMatrix = transform(this.transformationMatrix, translate(x / zoomLevel, y / zoomLevel));
         this.updateTransform();
@@ -529,7 +682,19 @@ var GraphComponent = /** @class */ (function (_super) {
      * @param x
      * @param y
      */
-    GraphComponent.prototype.panTo = function (x, y) {
+    /**
+       * Pan to a fixed x/y
+       *
+       * @param x
+       * @param y
+       */
+    GraphComponent.prototype.panTo = /**
+       * Pan to a fixed x/y
+       *
+       * @param x
+       * @param y
+       */
+    function (x, y) {
         this.transformationMatrix.e = x === null || x === undefined || isNaN(x) ? this.transformationMatrix.e : Number(x);
         this.transformationMatrix.f = y === null || y === undefined || isNaN(y) ? this.transformationMatrix.f : Number(y);
         this.updateTransform();
@@ -539,7 +704,17 @@ var GraphComponent = /** @class */ (function (_super) {
      *
      * @param factor Zoom multiplicative factor (1.1 for zooming in 10%, for instance)
      */
-    GraphComponent.prototype.zoom = function (factor) {
+    /**
+       * Zoom by a factor
+       *
+       * @param factor Zoom multiplicative factor (1.1 for zooming in 10%, for instance)
+       */
+    GraphComponent.prototype.zoom = /**
+       * Zoom by a factor
+       *
+       * @param factor Zoom multiplicative factor (1.1 for zooming in 10%, for instance)
+       */
+    function (factor) {
         this.transformationMatrix = transform(this.transformationMatrix, scale(factor, factor));
         this.updateTransform();
     };
@@ -554,7 +729,17 @@ var GraphComponent = /** @class */ (function (_super) {
      *
      * @param level
      */
-    GraphComponent.prototype.zoomTo = function (level) {
+    /**
+       * Zoom to a fixed level
+       *
+       * @param level
+       */
+    GraphComponent.prototype.zoomTo = /**
+       * Zoom to a fixed level
+       *
+       * @param level
+       */
+    function (level) {
         this.transformationMatrix.a = isNaN(level) ? this.transformationMatrix.a : Number(level);
         this.transformationMatrix.d = isNaN(level) ? this.transformationMatrix.d : Number(level);
         this.updateTransform();
@@ -566,7 +751,21 @@ var GraphComponent = /** @class */ (function (_super) {
      *
      * @memberOf GraphComponent
      */
-    GraphComponent.prototype.onPan = function (event) {
+    /**
+       * Pan was invoked from event
+       *
+       * @param {any} event
+       *
+       * @memberOf GraphComponent
+       */
+    GraphComponent.prototype.onPan = /**
+       * Pan was invoked from event
+       *
+       * @param {any} event
+       *
+       * @memberOf GraphComponent
+       */
+    function (event) {
         this.pan(event.movementX, event.movementY);
     };
     /**
@@ -576,7 +775,21 @@ var GraphComponent = /** @class */ (function (_super) {
      *
      * @memberOf GraphComponent
      */
-    GraphComponent.prototype.onDrag = function (event) {
+    /**
+       * Drag was invoked from an event
+       *
+       * @param {any} event
+       *
+       * @memberOf GraphComponent
+       */
+    GraphComponent.prototype.onDrag = /**
+       * Drag was invoked from an event
+       *
+       * @param {any} event
+       *
+       * @memberOf GraphComponent
+       */
+    function (event) {
         var _this = this;
         if (!this.draggingEnabled) {
             return;
@@ -623,7 +836,19 @@ var GraphComponent = /** @class */ (function (_super) {
      *
      * @memberOf GraphComponent
      */
-    GraphComponent.prototype.updateTransform = function () {
+    /**
+       * Update the entire view for the new pan position
+       *
+       *
+       * @memberOf GraphComponent
+       */
+    GraphComponent.prototype.updateTransform = /**
+       * Update the entire view for the new pan position
+       *
+       *
+       * @memberOf GraphComponent
+       */
+    function () {
         this.transform = toSVG(this.transformationMatrix);
     };
     /**
@@ -634,7 +859,23 @@ var GraphComponent = /** @class */ (function (_super) {
      *
      * @memberOf GraphComponent
      */
-    GraphComponent.prototype.onClick = function (event) {
+    /**
+       * Node was clicked
+       *
+       * @param {any} event
+       * @returns {void}
+       *
+       * @memberOf GraphComponent
+       */
+    GraphComponent.prototype.onClick = /**
+       * Node was clicked
+       *
+       * @param {any} event
+       * @returns {void}
+       *
+       * @memberOf GraphComponent
+       */
+    function (event) {
         this.select.emit(event);
     };
     /**
@@ -645,7 +886,23 @@ var GraphComponent = /** @class */ (function (_super) {
      *
      * @memberOf GraphComponent
      */
-    GraphComponent.prototype.onActivate = function (event) {
+    /**
+       * Node was focused
+       *
+       * @param {any} event
+       * @returns {void}
+       *
+       * @memberOf GraphComponent
+       */
+    GraphComponent.prototype.onActivate = /**
+       * Node was focused
+       *
+       * @param {any} event
+       * @returns {void}
+       *
+       * @memberOf GraphComponent
+       */
+    function (event) {
         if (this.activeEntries.indexOf(event) > -1)
             return;
         this.activeEntries = [event].concat(this.activeEntries);
@@ -658,7 +915,21 @@ var GraphComponent = /** @class */ (function (_super) {
      *
      * @memberOf GraphComponent
      */
-    GraphComponent.prototype.onDeactivate = function (event) {
+    /**
+       * Node was defocused
+       *
+       * @param {any} event
+       *
+       * @memberOf GraphComponent
+       */
+    GraphComponent.prototype.onDeactivate = /**
+       * Node was defocused
+       *
+       * @param {any} event
+       *
+       * @memberOf GraphComponent
+       */
+    function (event) {
         var idx = this.activeEntries.indexOf(event);
         this.activeEntries.splice(idx, 1);
         this.activeEntries = this.activeEntries.slice();
@@ -671,7 +942,21 @@ var GraphComponent = /** @class */ (function (_super) {
      *
      * @memberOf GraphComponent
      */
-    GraphComponent.prototype.getSeriesDomain = function () {
+    /**
+       * Get the domain series for the nodes
+       *
+       * @returns {any[]}
+       *
+       * @memberOf GraphComponent
+       */
+    GraphComponent.prototype.getSeriesDomain = /**
+       * Get the domain series for the nodes
+       *
+       * @returns {any[]}
+       *
+       * @memberOf GraphComponent
+       */
+    function () {
         var _this = this;
         return this.nodes
             .map(function (d) { return _this.groupResultsBy(d); })
@@ -687,7 +972,25 @@ var GraphComponent = /** @class */ (function (_super) {
      *
      * @memberOf GraphComponent
      */
-    GraphComponent.prototype.trackLinkBy = function (index, link) {
+    /**
+       * Tracking for the link
+       *
+       * @param {any} index
+       * @param {any} link
+       * @returns {*}
+       *
+       * @memberOf GraphComponent
+       */
+    GraphComponent.prototype.trackLinkBy = /**
+       * Tracking for the link
+       *
+       * @param {any} index
+       * @param {any} link
+       * @returns {*}
+       *
+       * @memberOf GraphComponent
+       */
+    function (index, link) {
         return link.id;
     };
     /**
@@ -699,7 +1002,25 @@ var GraphComponent = /** @class */ (function (_super) {
      *
      * @memberOf GraphComponent
      */
-    GraphComponent.prototype.trackNodeBy = function (index, node) {
+    /**
+       * Tracking for the node
+       *
+       * @param {any} index
+       * @param {any} node
+       * @returns {*}
+       *
+       * @memberOf GraphComponent
+       */
+    GraphComponent.prototype.trackNodeBy = /**
+       * Tracking for the node
+       *
+       * @param {any} index
+       * @param {any} node
+       * @returns {*}
+       *
+       * @memberOf GraphComponent
+       */
+    function (index, node) {
         return node.id;
     };
     /**
@@ -708,7 +1029,19 @@ var GraphComponent = /** @class */ (function (_super) {
      *
      * @memberOf GraphComponent
      */
-    GraphComponent.prototype.setColors = function () {
+    /**
+       * Sets the colors the nodes
+       *
+       *
+       * @memberOf GraphComponent
+       */
+    GraphComponent.prototype.setColors = /**
+       * Sets the colors the nodes
+       *
+       *
+       * @memberOf GraphComponent
+       */
+    function () {
         this.colors = new ColorHelper(this.scheme, 'ordinal', this.seriesDomain, this.customColors);
     };
     /**
@@ -718,7 +1051,21 @@ var GraphComponent = /** @class */ (function (_super) {
      *
      * @memberOf GraphComponent
      */
-    GraphComponent.prototype.getLegendOptions = function () {
+    /**
+       * Gets the legend options
+       *
+       * @returns {*}
+       *
+       * @memberOf GraphComponent
+       */
+    GraphComponent.prototype.getLegendOptions = /**
+       * Gets the legend options
+       *
+       * @returns {*}
+       *
+       * @memberOf GraphComponent
+       */
+    function () {
         return {
             scaleType: 'ordinal',
             domain: this.seriesDomain,
@@ -726,13 +1073,20 @@ var GraphComponent = /** @class */ (function (_super) {
         };
     };
     /**
-     * On mouse move event, used for panning and dragging.
-     *
-     * @param {MouseEvent} $event
-     *
-     * @memberOf GraphComponent
-     */
-    GraphComponent.prototype.onMouseMove = function ($event) {
+       * On mouse move event, used for panning and dragging.
+       *
+       * @param {MouseEvent} $event
+       *
+       * @memberOf GraphComponent
+       */
+    GraphComponent.prototype.onMouseMove = /**
+       * On mouse move event, used for panning and dragging.
+       *
+       * @param {MouseEvent} $event
+       *
+       * @memberOf GraphComponent
+       */
+    function ($event) {
         if (this.isPanning && this.panningEnabled) {
             this.onPan($event);
         }
@@ -747,19 +1101,40 @@ var GraphComponent = /** @class */ (function (_super) {
      *
      * @memberOf GraphComponent
      */
-    GraphComponent.prototype.onTouchStart = function (event) {
+    /**
+       * On touch start event to enable panning.
+       *
+       * @param {TouchEvent} $event
+       *
+       * @memberOf GraphComponent
+       */
+    GraphComponent.prototype.onTouchStart = /**
+       * On touch start event to enable panning.
+       *
+       * @param {TouchEvent} $event
+       *
+       * @memberOf GraphComponent
+       */
+    function (event) {
         this._touchLastX = event.changedTouches[0].clientX;
         this._touchLastY = event.changedTouches[0].clientY;
         this.isPanning = true;
     };
     /**
-     * On touch move event, used for panning.
-     *
-     * @param {TouchEvent} $event
-     *
-     * @memberOf GraphComponent
-     */
-    GraphComponent.prototype.onTouchMove = function ($event) {
+       * On touch move event, used for panning.
+       *
+       * @param {TouchEvent} $event
+       *
+       * @memberOf GraphComponent
+       */
+    GraphComponent.prototype.onTouchMove = /**
+       * On touch move event, used for panning.
+       *
+       * @param {TouchEvent} $event
+       *
+       * @memberOf GraphComponent
+       */
+    function ($event) {
         if (this.isPanning && this.panningEnabled) {
             var clientX = $event.changedTouches[0].clientX;
             var clientY = $event.changedTouches[0].clientY;
@@ -777,17 +1152,38 @@ var GraphComponent = /** @class */ (function (_super) {
      *
      * @memberOf GraphComponent
      */
-    GraphComponent.prototype.onTouchEnd = function (event) {
+    /**
+       * On touch end event to disable panning.
+       *
+       * @param {TouchEvent} $event
+       *
+       * @memberOf GraphComponent
+       */
+    GraphComponent.prototype.onTouchEnd = /**
+       * On touch end event to disable panning.
+       *
+       * @param {TouchEvent} $event
+       *
+       * @memberOf GraphComponent
+       */
+    function (event) {
         this.isPanning = false;
     };
     /**
-     * On mouse up event to disable panning/dragging.
-     *
-     * @param {MouseEvent} event
-     *
-     * @memberOf GraphComponent
-     */
-    GraphComponent.prototype.onMouseUp = function (event) {
+       * On mouse up event to disable panning/dragging.
+       *
+       * @param {MouseEvent} event
+       *
+       * @memberOf GraphComponent
+       */
+    GraphComponent.prototype.onMouseUp = /**
+       * On mouse up event to disable panning/dragging.
+       *
+       * @param {MouseEvent} event
+       *
+       * @memberOf GraphComponent
+       */
+    function (event) {
         this.isDragging = false;
         this.isPanning = false;
         if (this.layout && typeof this.layout !== 'string' && this.layout.onDragEnd) {
@@ -802,7 +1198,23 @@ var GraphComponent = /** @class */ (function (_super) {
      *
      * @memberOf GraphComponent
      */
-    GraphComponent.prototype.onNodeMouseDown = function (event, node) {
+    /**
+       * On node mouse down to kick off dragging
+       *
+       * @param {MouseEvent} event
+       * @param {*} node
+       *
+       * @memberOf GraphComponent
+       */
+    GraphComponent.prototype.onNodeMouseDown = /**
+       * On node mouse down to kick off dragging
+       *
+       * @param {MouseEvent} event
+       * @param {*} node
+       *
+       * @memberOf GraphComponent
+       */
+    function (event, node) {
         if (!this.draggingEnabled) {
             return;
         }
@@ -815,13 +1227,25 @@ var GraphComponent = /** @class */ (function (_super) {
     /**
      * Center the graph in the viewport
      */
-    GraphComponent.prototype.center = function () {
+    /**
+       * Center the graph in the viewport
+       */
+    GraphComponent.prototype.center = /**
+       * Center the graph in the viewport
+       */
+    function () {
         this.panTo(this.dims.width / 2 - this.graphDims.width * this.zoomLevel / 2, this.dims.height / 2 - this.graphDims.height * this.zoomLevel / 2);
     };
     /**
      * Zooms to fit the entier graph
      */
-    GraphComponent.prototype.zoomToFit = function () {
+    /**
+       * Zooms to fit the entier graph
+       */
+    GraphComponent.prototype.zoomToFit = /**
+       * Zooms to fit the entier graph
+       */
+    function () {
         var heightZoom = this.dims.height / this.graphDims.height;
         var widthZoom = this.dims.width / this.graphDims.width;
         var zoomLevel = Math.min(heightZoom, widthZoom, 1);
@@ -830,197 +1254,67 @@ var GraphComponent = /** @class */ (function (_super) {
             this.updateTransform();
         }
     };
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], GraphComponent.prototype, "legend", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Array)
-    ], GraphComponent.prototype, "nodes", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Array)
-    ], GraphComponent.prototype, "clusters", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Array)
-    ], GraphComponent.prototype, "links", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Array)
-    ], GraphComponent.prototype, "activeEntries", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Object)
-    ], GraphComponent.prototype, "curve", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], GraphComponent.prototype, "draggingEnabled", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Number)
-    ], GraphComponent.prototype, "nodeHeight", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Number)
-    ], GraphComponent.prototype, "nodeMaxHeight", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Number)
-    ], GraphComponent.prototype, "nodeMinHeight", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Number)
-    ], GraphComponent.prototype, "nodeWidth", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Number)
-    ], GraphComponent.prototype, "nodeMinWidth", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Number)
-    ], GraphComponent.prototype, "nodeMaxWidth", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], GraphComponent.prototype, "panningEnabled", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], GraphComponent.prototype, "enableZoom", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Number)
-    ], GraphComponent.prototype, "zoomSpeed", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Number)
-    ], GraphComponent.prototype, "minZoomLevel", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Number)
-    ], GraphComponent.prototype, "maxZoomLevel", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], GraphComponent.prototype, "autoZoom", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], GraphComponent.prototype, "panOnZoom", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Boolean)
-    ], GraphComponent.prototype, "autoCenter", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Observable)
-    ], GraphComponent.prototype, "update$", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Observable)
-    ], GraphComponent.prototype, "center$", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Observable)
-    ], GraphComponent.prototype, "zoomToFit$", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Object)
-    ], GraphComponent.prototype, "layout", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Object)
-    ], GraphComponent.prototype, "layoutSettings", void 0);
-    __decorate([
-        Output(),
-        __metadata("design:type", EventEmitter)
-    ], GraphComponent.prototype, "activate", void 0);
-    __decorate([
-        Output(),
-        __metadata("design:type", EventEmitter)
-    ], GraphComponent.prototype, "deactivate", void 0);
-    __decorate([
-        ContentChild('linkTemplate'),
-        __metadata("design:type", TemplateRef)
-    ], GraphComponent.prototype, "linkTemplate", void 0);
-    __decorate([
-        ContentChild('nodeTemplate'),
-        __metadata("design:type", TemplateRef)
-    ], GraphComponent.prototype, "nodeTemplate", void 0);
-    __decorate([
-        ContentChild('clusterTemplate'),
-        __metadata("design:type", TemplateRef)
-    ], GraphComponent.prototype, "clusterTemplate", void 0);
-    __decorate([
-        ContentChild('defsTemplate'),
-        __metadata("design:type", TemplateRef)
-    ], GraphComponent.prototype, "defsTemplate", void 0);
-    __decorate([
-        ViewChild(ChartComponent, { read: ElementRef }),
-        __metadata("design:type", ElementRef)
-    ], GraphComponent.prototype, "chart", void 0);
-    __decorate([
-        ViewChildren('nodeElement'),
-        __metadata("design:type", QueryList)
-    ], GraphComponent.prototype, "nodeElements", void 0);
-    __decorate([
-        ViewChildren('linkElement'),
-        __metadata("design:type", QueryList)
-    ], GraphComponent.prototype, "linkElements", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Function)
-    ], GraphComponent.prototype, "groupResultsBy", void 0);
-    __decorate([
-        Input('zoomLevel'),
-        __metadata("design:type", Object),
-        __metadata("design:paramtypes", [Object])
-    ], GraphComponent.prototype, "zoomLevel", null);
-    __decorate([
-        Input('panOffsetX'),
-        __metadata("design:type", Object),
-        __metadata("design:paramtypes", [Object])
-    ], GraphComponent.prototype, "panOffsetX", null);
-    __decorate([
-        Input('panOffsetY'),
-        __metadata("design:type", Object),
-        __metadata("design:paramtypes", [Object])
-    ], GraphComponent.prototype, "panOffsetY", null);
-    __decorate([
-        HostListener('document:mousemove', ['$event']),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [MouseEvent]),
-        __metadata("design:returntype", void 0)
-    ], GraphComponent.prototype, "onMouseMove", null);
-    __decorate([
-        HostListener('document:touchmove', ['$event']),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [TouchEvent]),
-        __metadata("design:returntype", void 0)
-    ], GraphComponent.prototype, "onTouchMove", null);
-    __decorate([
-        HostListener('document:mouseup'),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [MouseEvent]),
-        __metadata("design:returntype", void 0)
-    ], GraphComponent.prototype, "onMouseUp", null);
-    GraphComponent = __decorate([
-        Component({
-            selector: 'ngx-graph',
-            styleUrls: ['./graph.component.scss'],
-            template: "\n  <div class=\"zoom-buttons\">\n    <button (click)=\"zoomIn()\"><img src=\"src/assets/icons8-zoom-in-26.png\"></button>\n    <button (click)=\"zoomOut()\"><img src=\"src/assets/icons8-zoom-out-26.png\"></button>\n  </div>\n  <ngx-charts-chart [view]=\"[width, height]\" [showLegend]=\"legend\" [legendOptions]=\"legendOptions\" (legendLabelClick)=\"onClick($event)\"\n  (legendLabelActivate)=\"onActivate($event)\" (legendLabelDeactivate)=\"onDeactivate($event)\"\n  >\n  <svg:g *ngIf=\"initialized && graph\" [attr.transform]=\"transform\" (touchstart)=\"onTouchStart($event)\" (touchend)=\"onTouchEnd($event)\"\n    class=\"graph chart\">\n    <defs>\n      <ng-template *ngIf=\"defsTemplate\" [ngTemplateOutlet]=\"defsTemplate\">\n      </ng-template>\n      <svg:path class=\"text-path\" *ngFor=\"let link of graph.edges\" [attr.d]=\"link.textPath\" [attr.id]=\"link.id\">\n      </svg:path>\n    </defs>\n    <svg:rect class=\"panning-rect\" [attr.width]=\"dims.width * 100\" [attr.height]=\"dims.height * 100\" [attr.transform]=\"'translate(' + ((-dims.width || 0) * 50) +',' + ((-dims.height || 0) *50) + ')' \"\n      (mousedown)=\"isPanning = true\" />\n      <svg:g class=\"clusters\">\n        <svg:g #clusterElement *ngFor=\"let node of graph.clusters; trackBy: trackNodeBy\" class=\"node-group\" [id]=\"node.id\" [attr.transform]=\"node.transform\"\n          (click)=\"onClick(node)\">\n          <ng-template *ngIf=\"clusterTemplate\" [ngTemplateOutlet]=\"clusterTemplate\" [ngTemplateOutletContext]=\"{ $implicit: node }\">\n          </ng-template>\n          <svg:g *ngIf=\"!clusterTemplate\" class=\"node cluster\">\n            <svg:rect [attr.width]=\"node.dimension.width\" [attr.height]=\"node.dimension.height\" [attr.fill]=\"node.data?.color\" />\n            <svg:text alignment-baseline=\"central\" [attr.x]=\"10\" [attr.y]=\"node.dimension.height / 2\">{{node.label}}</svg:text>\n          </svg:g>\n        </svg:g>\n      </svg:g>\n      <svg:g class=\"links\">\n      <svg:g #linkElement *ngFor=\"let link of graph.edges; trackBy: trackLinkBy\" class=\"link-group\" [id]=\"link.id\">\n        <ng-template *ngIf=\"linkTemplate\" [ngTemplateOutlet]=\"linkTemplate\" [ngTemplateOutletContext]=\"{ $implicit: link }\">\n        </ng-template>\n        <svg:path *ngIf=\"!linkTemplate\" class=\"edge\" [attr.d]=\"link.line\" />\n      </svg:g>\n    </svg:g>\n    <svg:g class=\"nodes\">\n      <svg:g #nodeElement *ngFor=\"let node of graph.nodes; trackBy: trackNodeBy\" class=\"node-group\" [id]=\"node.id\" [attr.transform]=\"node.transform\"\n        (click)=\"onClick(node)\" (mousedown)=\"onNodeMouseDown($event, node)\">\n        <ng-template *ngIf=\"nodeTemplate\" [ngTemplateOutlet]=\"nodeTemplate\" [ngTemplateOutletContext]=\"{ $implicit: node }\">\n        </ng-template>\n        <svg:circle *ngIf=\"!nodeTemplate\" r=\"10\" [attr.cx]=\"node.dimension.width / 2\" [attr.cy]=\"node.dimension.height / 2\" [attr.fill]=\"node.data?.color\"\n        />\n      </svg:g>\n    </svg:g>\n  </svg:g>\n</ngx-charts-chart>\n  ",
-            encapsulation: ViewEncapsulation.None,
-            changeDetection: ChangeDetectionStrategy.OnPush,
-            animations: [trigger('link', [ngTransition('* => *', [animate(500, style({ transform: '*' }))])])]
-        }),
-        __metadata("design:paramtypes", [ElementRef,
-            NgZone,
-            ChangeDetectorRef,
-            LayoutService])
-    ], GraphComponent);
+    GraphComponent.decorators = [
+        { type: Component, args: [{
+                    selector: 'ngx-graph',
+                    styleUrls: ['./graph.component.css'],
+                    template: "\n  <div class=\"zoom-buttons\">\n    <button (click)=\"zoomIn()\"><img src=\"src/assets/icons8-zoom-in-26.png\"></button>\n    <button (click)=\"zoomOut()\"><img src=\"src/assets/icons8-zoom-out-26.png\"></button>\n  </div>\n  <ngx-charts-chart [view]=\"[width, height]\" [showLegend]=\"legend\" [legendOptions]=\"legendOptions\" (legendLabelClick)=\"onClick($event)\"\n  (legendLabelActivate)=\"onActivate($event)\" (legendLabelDeactivate)=\"onDeactivate($event)\"\n  >\n  <svg:g *ngIf=\"initialized && graph\" [attr.transform]=\"transform\" (touchstart)=\"onTouchStart($event)\" (touchend)=\"onTouchEnd($event)\"\n    class=\"graph chart\">\n    <defs>\n      <ng-template *ngIf=\"defsTemplate\" [ngTemplateOutlet]=\"defsTemplate\">\n      </ng-template>\n      <svg:path class=\"text-path\" *ngFor=\"let link of graph.edges\" [attr.d]=\"link.textPath\" [attr.id]=\"link.id\">\n      </svg:path>\n    </defs>\n    <svg:rect class=\"panning-rect\" [attr.width]=\"dims.width * 100\" [attr.height]=\"dims.height * 100\" [attr.transform]=\"'translate(' + ((-dims.width || 0) * 50) +',' + ((-dims.height || 0) *50) + ')' \"\n      (mousedown)=\"isPanning = true\" />\n      <svg:g class=\"clusters\">\n        <svg:g #clusterElement *ngFor=\"let node of graph.clusters; trackBy: trackNodeBy\" class=\"node-group\" [id]=\"node.id\" [attr.transform]=\"node.transform\"\n          (click)=\"onClick(node)\">\n          <ng-template *ngIf=\"clusterTemplate\" [ngTemplateOutlet]=\"clusterTemplate\" [ngTemplateOutletContext]=\"{ $implicit: node }\">\n          </ng-template>\n          <svg:g *ngIf=\"!clusterTemplate\" class=\"node cluster\">\n            <svg:rect [attr.width]=\"node.dimension.width\" [attr.height]=\"node.dimension.height\" [attr.fill]=\"node.data?.color\" />\n            <svg:text alignment-baseline=\"central\" [attr.x]=\"10\" [attr.y]=\"node.dimension.height / 2\">{{node.label}}</svg:text>\n          </svg:g>\n        </svg:g>\n      </svg:g>\n      <svg:g class=\"links\">\n      <svg:g #linkElement *ngFor=\"let link of graph.edges; trackBy: trackLinkBy\" class=\"link-group\" [id]=\"link.id\">\n        <ng-template *ngIf=\"linkTemplate\" [ngTemplateOutlet]=\"linkTemplate\" [ngTemplateOutletContext]=\"{ $implicit: link }\">\n        </ng-template>\n        <svg:path *ngIf=\"!linkTemplate\" class=\"edge\" [attr.d]=\"link.line\" />\n      </svg:g>\n    </svg:g>\n    <svg:g class=\"nodes\">\n      <svg:g #nodeElement *ngFor=\"let node of graph.nodes; trackBy: trackNodeBy\" class=\"node-group\" [id]=\"node.id\" [attr.transform]=\"node.transform\"\n        (click)=\"onClick(node)\" (mousedown)=\"onNodeMouseDown($event, node)\">\n        <ng-template *ngIf=\"nodeTemplate\" [ngTemplateOutlet]=\"nodeTemplate\" [ngTemplateOutletContext]=\"{ $implicit: node }\">\n        </ng-template>\n        <svg:circle *ngIf=\"!nodeTemplate\" r=\"10\" [attr.cx]=\"node.dimension.width / 2\" [attr.cy]=\"node.dimension.height / 2\" [attr.fill]=\"node.data?.color\"\n        />\n      </svg:g>\n    </svg:g>\n  </svg:g>\n</ngx-charts-chart>\n  ",
+                    encapsulation: ViewEncapsulation.None,
+                    changeDetection: ChangeDetectionStrategy.OnPush,
+                    animations: [trigger('link', [ngTransition('* => *', [animate(500, style({ transform: '*' }))])])]
+                },] },
+    ];
+    /** @nocollapse */
+    GraphComponent.ctorParameters = function () { return [
+        { type: ElementRef, },
+        { type: NgZone, },
+        { type: ChangeDetectorRef, },
+        { type: LayoutService, },
+    ]; };
+    GraphComponent.propDecorators = {
+        "legend": [{ type: Input },],
+        "nodes": [{ type: Input },],
+        "clusters": [{ type: Input },],
+        "links": [{ type: Input },],
+        "activeEntries": [{ type: Input },],
+        "curve": [{ type: Input },],
+        "draggingEnabled": [{ type: Input },],
+        "nodeHeight": [{ type: Input },],
+        "nodeMaxHeight": [{ type: Input },],
+        "nodeMinHeight": [{ type: Input },],
+        "nodeWidth": [{ type: Input },],
+        "nodeMinWidth": [{ type: Input },],
+        "nodeMaxWidth": [{ type: Input },],
+        "panningEnabled": [{ type: Input },],
+        "enableZoom": [{ type: Input },],
+        "zoomSpeed": [{ type: Input },],
+        "minZoomLevel": [{ type: Input },],
+        "maxZoomLevel": [{ type: Input },],
+        "autoZoom": [{ type: Input },],
+        "panOnZoom": [{ type: Input },],
+        "autoCenter": [{ type: Input },],
+        "update$": [{ type: Input },],
+        "center$": [{ type: Input },],
+        "zoomToFit$": [{ type: Input },],
+        "layout": [{ type: Input },],
+        "layoutSettings": [{ type: Input },],
+        "activate": [{ type: Output },],
+        "deactivate": [{ type: Output },],
+        "linkTemplate": [{ type: ContentChild, args: ['linkTemplate',] },],
+        "nodeTemplate": [{ type: ContentChild, args: ['nodeTemplate',] },],
+        "clusterTemplate": [{ type: ContentChild, args: ['clusterTemplate',] },],
+        "defsTemplate": [{ type: ContentChild, args: ['defsTemplate',] },],
+        "chart": [{ type: ViewChild, args: [ChartComponent, { read: ElementRef },] },],
+        "nodeElements": [{ type: ViewChildren, args: ['nodeElement',] },],
+        "linkElements": [{ type: ViewChildren, args: ['linkElement',] },],
+        "groupResultsBy": [{ type: Input },],
+        "zoomLevel": [{ type: Input, args: ['zoomLevel',] },],
+        "panOffsetX": [{ type: Input, args: ['panOffsetX',] },],
+        "panOffsetY": [{ type: Input, args: ['panOffsetY',] },],
+        "onMouseMove": [{ type: HostListener, args: ['document:mousemove', ['$event'],] },],
+        "onTouchMove": [{ type: HostListener, args: ['document:touchmove', ['$event'],] },],
+        "onMouseUp": [{ type: HostListener, args: ['document:mouseup',] },],
+    };
     return GraphComponent;
 }(BaseChartComponent));
 export { GraphComponent };

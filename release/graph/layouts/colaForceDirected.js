@@ -40,17 +40,21 @@ var ColaForceDirectedLayout = /** @class */ (function () {
             this.inputGraph.clusters = [];
         }
         this.internalGraph = {
-            nodes: this.inputGraph.nodes.map(function (n) { return (__assign({}, n, { width: n.dimension ? n.dimension.width : 20, height: n.dimension ? n.dimension.height : 20 })); }).slice(),
-            groups: this.inputGraph.clusters.map(function (cluster) { return ({
-                id: cluster.id,
-                padding: 5,
-                groups: cluster.childNodeIds
-                    .map(function (nodeId) { return _this.inputGraph.clusters.findIndex(function (node) { return node.id === nodeId; }); })
-                    .filter(function (x) { return x >= 0; }),
-                leaves: cluster.childNodeIds
-                    .map(function (nodeId) { return _this.inputGraph.nodes.findIndex(function (node) { return node.id === nodeId; }); })
-                    .filter(function (x) { return x >= 0; }),
-            }); }).slice(),
+            nodes: this.inputGraph.nodes.map(function (n) {
+                return (__assign({}, n, { width: n.dimension ? n.dimension.width : 20, height: n.dimension ? n.dimension.height : 20 }));
+            }).slice(),
+            groups: this.inputGraph.clusters.map(function (cluster) {
+                return ({
+                    id: cluster.id,
+                    padding: 5,
+                    groups: cluster.childNodeIds
+                        .map(function (nodeId) { return _this.inputGraph.clusters.findIndex(function (node) { return node.id === nodeId; }); })
+                        .filter(function (x) { return x >= 0; }),
+                    leaves: cluster.childNodeIds
+                        .map(function (nodeId) { return _this.inputGraph.nodes.findIndex(function (node) { return node.id === nodeId; }); })
+                        .filter(function (x) { return x >= 0; }),
+                });
+            }).slice(),
             links: this.inputGraph.edges.map(function (e) {
                 var sourceNodeIndex = _this.inputGraph.nodes.findIndex(function (node) { return e.source === node.id; });
                 var targetNodeIndex = _this.inputGraph.nodes.findIndex(function (node) { return e.target === node.id; });
@@ -109,13 +113,15 @@ var ColaForceDirectedLayout = /** @class */ (function () {
     };
     ColaForceDirectedLayout.prototype.internalGraphToOutputGraph = function (internalGraph) {
         var _this = this;
-        this.outputGraph.nodes = internalGraph.nodes.map(function (node) { return (__assign({}, node, { id: node.id || id(), position: {
-                x: node.x,
-                y: node.y,
-            }, dimension: {
-                width: node.dimension && node.dimension.width || 20,
-                height: node.dimension && node.dimension.height || 20,
-            }, transform: "translate(" + (node.x - (node.dimension && node.dimension.width || 20) / 2 || 0) + ", " + (node.y - (node.dimension && node.dimension.height || 20) / 2 || 0) + ")" })); });
+        this.outputGraph.nodes = internalGraph.nodes.map(function (node) {
+            return (__assign({}, node, { id: node.id || id(), position: {
+                    x: node.x,
+                    y: node.y,
+                }, dimension: {
+                    width: node.dimension && node.dimension.width || 20,
+                    height: node.dimension && node.dimension.height || 20,
+                }, transform: "translate(" + (node.x - (node.dimension && node.dimension.width || 20) / 2 || 0) + ", " + (node.y - (node.dimension && node.dimension.height || 20) / 2 || 0) + ")" }));
+        });
         this.outputGraph.edges = internalGraph.links.map(function (edge) {
             var source = toNode(internalGraph.nodes, edge.source);
             var target = toNode(internalGraph.nodes, edge.target);
