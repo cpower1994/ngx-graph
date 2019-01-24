@@ -68,27 +68,23 @@ var D3ForceDirectedLayout = /** @class */ (function () {
         return this.outputGraph$.asObservable();
     };
     D3ForceDirectedLayout.prototype.d3GraphToOutputGraph = function (d3Graph) {
-        this.outputGraph.nodes = this.d3Graph.nodes.map(function (node) {
-            return (__assign({}, node, { id: node.id || id(), position: {
-                    x: node.x,
-                    y: node.y,
-                }, dimension: {
-                    width: node.dimension && node.dimension.width || 20,
-                    height: node.dimension && node.dimension.height || 20,
-                }, transform: "translate(" + (node.x - (node.dimension && node.dimension.width || 20) / 2 || 0) + ", " + (node.y - (node.dimension && node.dimension.height || 20) / 2 || 0) + ")" }));
-        });
-        this.outputGraph.edges = this.d3Graph.edges.map(function (edge) {
-            return (__assign({}, edge, { source: toD3Node(edge.source).id, target: toD3Node(edge.target).id, points: [
-                    {
-                        x: toD3Node(edge.source).x,
-                        y: toD3Node(edge.source).y,
-                    },
-                    {
-                        x: toD3Node(edge.target).x,
-                        y: toD3Node(edge.target).y,
-                    },
-                ] }));
-        });
+        this.outputGraph.nodes = this.d3Graph.nodes.map(function (node) { return (__assign({}, node, { id: node.id || id(), position: {
+                x: node.x,
+                y: node.y,
+            }, dimension: {
+                width: node.dimension && node.dimension.width || 20,
+                height: node.dimension && node.dimension.height || 20,
+            }, transform: "translate(" + (node.x - (node.dimension && node.dimension.width || 20) / 2 || 0) + ", " + (node.y - (node.dimension && node.dimension.height || 20) / 2 || 0) + ")" })); });
+        this.outputGraph.edges = this.d3Graph.edges.map(function (edge) { return (__assign({}, edge, { source: toD3Node(edge.source).id, target: toD3Node(edge.target).id, points: [
+                {
+                    x: toD3Node(edge.source).x,
+                    y: toD3Node(edge.source).y,
+                },
+                {
+                    x: toD3Node(edge.target).x,
+                    y: toD3Node(edge.target).y,
+                },
+            ] })); });
         this.outputGraph.edgeLabels = this.outputGraph.edges;
         return this.outputGraph;
     };
