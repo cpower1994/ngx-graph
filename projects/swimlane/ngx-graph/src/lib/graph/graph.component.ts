@@ -57,58 +57,7 @@ export interface Matrix {
 @Component({
   selector: 'ngx-graph',
   styleUrls: ['./graph.component.scss'],
-<<<<<<< HEAD:src/graph/graph.component.ts
-  template: `
-  <div class="zoom-buttons">
-    <button (click)="zoomIn()"><img src="src/assets/icons8-zoom-in-26.png"></button>
-    <button (click)="zoomOut()"><img src="src/assets/icons8-zoom-out-26.png"></button>
-  </div>
-  <ngx-charts-chart [view]="[width, height]" [showLegend]="legend" [legendOptions]="legendOptions" (legendLabelClick)="onClick($event)"
-  (legendLabelActivate)="onActivate($event)" (legendLabelDeactivate)="onDeactivate($event)"
-  >
-  <svg:g *ngIf="initialized && graph" [attr.transform]="transform" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)"
-    class="graph chart">
-    <defs>
-      <ng-template *ngIf="defsTemplate" [ngTemplateOutlet]="defsTemplate">
-      </ng-template>
-      <svg:path class="text-path" *ngFor="let link of graph.edges" [attr.d]="link.textPath" [attr.id]="link.id">
-      </svg:path>
-    </defs>
-    <svg:rect class="panning-rect" [attr.width]="dims.width * 100" [attr.height]="dims.height * 100" [attr.transform]="'translate(' + ((-dims.width || 0) * 50) +',' + ((-dims.height || 0) *50) + ')' "
-      (mousedown)="isPanning = true" />
-      <svg:g class="clusters">
-        <svg:g #clusterElement *ngFor="let node of graph.clusters; trackBy: trackNodeBy" class="node-group" [id]="node.id" [attr.transform]="node.transform"
-          (click)="onClick(node)">
-          <ng-template *ngIf="clusterTemplate" [ngTemplateOutlet]="clusterTemplate" [ngTemplateOutletContext]="{ $implicit: node }">
-          </ng-template>
-          <svg:g *ngIf="!clusterTemplate" class="node cluster">
-            <svg:rect [attr.width]="node.dimension.width" [attr.height]="node.dimension.height" [attr.fill]="node.data?.color" />
-            <svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.dimension.height / 2">{{node.label}}</svg:text>
-          </svg:g>
-        </svg:g>
-      </svg:g>
-      <svg:g class="links">
-      <svg:g #linkElement *ngFor="let link of graph.edges; trackBy: trackLinkBy" class="link-group" [id]="link.id">
-        <ng-template *ngIf="linkTemplate" [ngTemplateOutlet]="linkTemplate" [ngTemplateOutletContext]="{ $implicit: link }">
-        </ng-template>
-        <svg:path *ngIf="!linkTemplate" class="edge" [attr.d]="link.line" />
-      </svg:g>
-    </svg:g>
-    <svg:g class="nodes">
-      <svg:g #nodeElement *ngFor="let node of graph.nodes; trackBy: trackNodeBy" class="node-group" [id]="node.id" [attr.transform]="node.transform"
-        (click)="onClick(node)" (mousedown)="onNodeMouseDown($event, node)">
-        <ng-template *ngIf="nodeTemplate" [ngTemplateOutlet]="nodeTemplate" [ngTemplateOutletContext]="{ $implicit: node }">
-        </ng-template>
-        <svg:circle *ngIf="!nodeTemplate" r="10" [attr.cx]="node.dimension.width / 2" [attr.cy]="node.dimension.height / 2" [attr.fill]="node.data?.color"
-        />
-      </svg:g>
-    </svg:g>
-  </svg:g>
-</ngx-charts-chart>
-  `,
-=======
   templateUrl: 'graph.component.html',
->>>>>>> upstream/master:projects/swimlane/ngx-graph/src/lib/graph/graph.component.ts
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [trigger('link', [ngTransition('* => *', [animate(500, style({ transform: '*' }))])])]
